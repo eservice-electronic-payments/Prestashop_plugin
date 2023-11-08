@@ -26,12 +26,12 @@ class EServicePaymentModuleFrontController extends ModuleFrontController
         $this->ssl = true;
         $this->eservice = new EService();
         $this->eservice->initEVOConfig();
+		//it's safe to use MD5 here
         $this->merchantCode = substr(md5(uniqid(mt_rand(), true)), 0, 20);
         $this->url = Payments\Config::$BaseUrl;
         $this->mapStatuses = EService::MAP_STATUSES;
         $this->merchantId = Payments\Config::$MerchantId;
         $this->jsUrl = Payments\Config::$JavaScriptUrl;        
-//        PrestaShopLogger::addLog( 'EServicePaymentModuleFrontController - 1 POSTPROCESS'. json_encode( $_REQUEST));
     }
 
     public function initContent()
